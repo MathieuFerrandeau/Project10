@@ -1,0 +1,52 @@
+{% extends "catalog/base.html" %}
+{% block content %}
+<header class="smallheader text-center text-white d-flex" style="background-image: url({{ image }}) !important;">
+    <div class="container my-auto">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <h1 class="text-uppercase">
+                    <strong>{{ title }}</strong>
+                </h1>  
+                {% if messages %}
+                   {% for message in messages %}
+                       <div class="alert alert-{{ message.tags }}">
+                       {{ message }}
+                       </div>
+                   {% endfor %}
+                {% endif %}              
+            </div>
+        </div>
+    </div>
+</header>
+<section>
+	<div class="container">
+		<div class="col-md-18 text-center">    
+		        <h2 class="section-heading">Vous pouvez remplacer cet aliment par :</h2>
+		        <hr>
+				{% for new_product in alt_products %}
+					<div class="card product-card">
+						<div class="product-card-badge">
+                            <span class="product-nutrigrade badge badge-{{ new_product.nutrition_grade }}">{{ new_product.nutrition_grade }}</span>
+                        </div>
+						<div class="product-card-img" style="background-image: url({{ new_product.picture }})"></div>         
+				            <div class="card-body">
+				            <h4 class="card-title product-card-title">{{ new_product.name }}</h4>
+							
+							<a href="{% url 'catalog:detail' product_id=new_product.id %}"> détails</a>
+
+							{% if user.is_authenticated %}
+							<div class="save-result" id="{{ new_product.id }}"></div>
+							<form method="post" action="{% url 'catalog:favorite' product_id=new_product.id%}">
+							    {% csrf_token %}
+							    <input class="btn btn-primary btn-xl mt-50" type="submit" value="Sauvegarder" id="{{ new_product.id }}">
+							</form>
+							{% endif %}
+						</div>
+					</div>
+				{% endfor %}
+
+				<div class="clearfix"></div>                
+		</div>
+	</div>	
+</section>
+{% endblock content %}

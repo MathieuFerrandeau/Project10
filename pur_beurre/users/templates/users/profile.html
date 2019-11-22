@@ -1,0 +1,24 @@
+{% extends "catalog/base.html" %}
+{% block content %}
+<header class="smallheader text-center text-white d-flex">
+    <div class="container my-auto">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <h1 class="text-uppercase">
+                    <strong>{{ user.username }}</strong>
+                </h1>                
+            </div>
+        </div>
+    </div>
+</header>
+<section id="account">
+	<div class="container text-center my-auto">
+        <div>
+            <h3>Informations sur mon compte</h3>
+            <hr>
+            <p>Email: {{ user.email }}</p>
+        </div>
+        <br>  	
+    </div>
+</section>
+{% endblock content %}

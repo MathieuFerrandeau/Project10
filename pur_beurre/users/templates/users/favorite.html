@@ -1,0 +1,25 @@
+{% extends "catalog/base.html" %}
+{% block content %}
+<header class="smallheader text-center text-white d-flex">
+    <div class="container my-auto">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <h1 class="text-uppercase">
+                    <strong>Mes produits</strong>
+                </h1>                
+            </div>
+        </div>
+    </div>
+</header>
+<section id="favorite">
+	<div class="container text-center my-auto">
+		<div>
+		    <h3>Liste de vos produits favoris</h3>
+		    <hr> 
+		        {% for product in favorite %}
+		                <p><a href="{{ product.url }}">{{product.name}} - ({{ product.nutrition_grade }})</a></p>
+		        {% endfor %}             
+		</div>
+	</div>
+</section>
+{% endblock content %}  

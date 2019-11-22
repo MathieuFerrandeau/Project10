@@ -1,0 +1,74 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+<header class="smallheader text-center text-white d-flex">
+    <div class="container my-auto">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <h1 class="text-uppercase">
+                    <strong>Inscription</strong>
+                </h1>                
+            </div>
+        </div>
+    </div>
+</header>
+<section class="text-center d-flex">
+    <div class="container my-auto">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <h3 class="border-bottom mb-3">Créez votre compte Pur Beurre!</h3>
+            </fieldset>
+            
+            <div class="fieldWrapper my-label">
+                <label for="{{ form.username.id_for_label }}">Nom d'utilisateur</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                    {% for error in form.username.errors %}
+                        <p class="errorform">{{ error }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="fieldWrapper my-label">
+                <label for="{{ form.email.id_for_label }}">Adresse email</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                    {% for error in form.email.errors %}
+                        <p class="errorform">{{ error }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="fieldWrapper my-label">
+                <label for="{{ form.password.id_for_label }}">Mot de passe</label>
+                {{ form.password1 }}
+                {% if form.password.errors %}
+                    {% for error in form.password.errors %}
+                        <p class="errorform">{{ error }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="fieldWrapper my-label">
+                <label for="{{ form.password.id_for_label }}">Confirmation mdp</label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                    {% for error in form.password2.errors %}
+                        <p class="errorform">{{ error }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            
+            <br>
+            
+            <div class="form-group">
+                <button class="btn btn-primary btn-xl mt-50" type="submit">S'inscrire</button>
+            </div>
+        </form>
+        <div>
+                Vous avez déjà un compte? <a href="{% url 'login' %}">Connexion</a>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}

@@ -1,0 +1,20 @@
+ {% extends 'catalog/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% csrf_token %}
+
+<header class="masthead text-center text-white d-flex">
+   <div class="container my-auto">
+   <div class="row">
+      <div class="col-lg-10 mx-auto p-3 custom-color ">
+
+         <h3 class="custom_title">
+             <strong>Une erreur interne s'est produite !</strong></br>
+             Nous mettons tout en oeuvre pour regler le problème ! 
+         </h3>
+      </div>
+   </div>
+</header>
+
+{% endblock %}

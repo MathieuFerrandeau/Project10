@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Pur Beurre</title>
+
+  <!-- Font Awesome Icons -->
+  <link href="{% static 'catalog/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+  <!-- Fonts -->
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Scope+One" rel="stylesheet" type="text/css">
+
+  <!-- Plugin CSS -->
+  <link href="{% static 'catalog/vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
+
+  <!-- Theme CSS - Includes Bootstrap -->
+  <link href="{% static 'catalog/css/creatives.min.css' %}" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'catalog/css/main.css' %}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <img id="logo" src="{% static 'catalog/img/pb1.png' %}" title="Pur Beurre" alt="Pur Beurre"/>
+      <a class="navbar-brand js-scroll-trigger" href="/"><strong>Pur Beurre</strong></a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li>
+            <form id="search-nav"  action="{% url 'catalog:search' %}" method="get" accept-charset="utf-8">
+                <input type="text" name="query" id ="querynav" placeholder="Chercher un produit" required>
+            </form>
+          </li>
+
+          {% if user.is_authenticated %}
+
+          <li class="nav-item icon">
+             <a href="{% url 'profile' %}"> <i class="fas fa-user fa-2x" data-toggle="tooltip" title="Mon Profile" ></i></a>
+          </li>
+          <li class="nav-item icon">
+            <a href="{% url 'favorite' %}"> <i class="fas fa-carrot fa-2x" data-toggle="tooltip" title="Mes produits"></i></a>
+          </li>
+          <li class="nav-item icon">
+            <a href="{% url 'logout' %}"> <i class="fas fa-sign-out-alt fa-2x" data-toggle="tooltip" title="Déconnexion" ></i></a>
+          </li>
+
+          {% else %}
+
+          <li class="nav-item icon">
+            <a href="{% url 'register' %}"> <i class="fas fa-user-plus fa-2x" data-toggle="tooltip" title="S'inscrire"></i></a>
+          </li>
+          <li class="nav-item icon">
+            <a href="{% url 'login' %}"> <i class="fas fa-sign-in-alt fa-2x" data-toggle="tooltip" title="Se Connecter"></i></a>
+          </li>
+
+          {% endif %}
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  {% block content %}{% endblock %}
+
+    <!-- Contact Section -->
+  <section class="page-section" id="contact">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="mt-0">Contactez-nous!</h2>
+          <hr class="divider my-4">
+          <p class="text-muted mb-5"><strong>Notre idée de Plateforme vous plait ? Vous désirez nous soutenir ou nous faire part d'un axe d'amélioration ? Vous trouverez ci-dessous nos coordonnées!</strong></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+          <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
+          <div>01.57.00.00.00</div>
+        </div>
+        <div class="col-lg-4 mr-auto text-center">
+          <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
+          <!-- Make sure to change the email address in anchor text AND the link below! -->
+          <a class="d-block" href="mailto:contact@yourwebsite.com">contact@pur_beurre.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+      <section class="bg-footer">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-6 col-md-6 text-center">
+                  <div class="service-box mt-5 mx-auto">
+                     <i class="fas fa-4x fa-gem text-icone mb-3 sr-icon-1" ></i><br>
+                     <a href ="{% url 'catalog:credits' %}" class="mb-3 a-headings">Mentions légales</a>
+                     <p class="text-muted mb-0"><strong>Nos différentes sources.</strong></p>
+                  </div>
+               </div>
+               <div class="col-lg-6 col-md-6 text-center">
+                  <div class="service-box mt-5 mx-auto">
+                     <i class="fas fa-4x fa-paper-plane text-icone mb-3 sr-icon-2"></i><br>
+                     <a href="#contact" class="mb-3 a-headings js-scroll-trigger">Contact</a>
+                     <p class="text-muted mb-0"><strong>Nous sommes a votre écoute !</strong></p>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-lg-12 col-md-6 text-center mt-5">
+                  <h6 class="custom_title" style="font-family:'Scope One'"><br><strong>Mathieu Ferrandeau - Projet 8 Développeur d'application : Python - Openclassrooms</strong></h6>
+               </div>
+            </div>
+         </div>
+      </section>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'catalog/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'catalog/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="{% static 'catalog/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'catalog/vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="{% static 'catalog/js/creative.min.js' %}"></script>
+
+</body>
+
+</html>
