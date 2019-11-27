@@ -16,4 +16,5 @@ services:
 env: DJANGO_SETTINGS_MODULE="pur_beurre.settings.travis"
 
 script:
+  - cd pur_beurre
   - ./manage.py test

@@ -1,4 +1,9 @@
 __pycache__
 pur_beurre/pur_beurre/settings/production.py
 pur_beurre/pur_beurre/staticfiles/
+<<<<<<< HEAD
 pur_beurre/logs/
+=======
+env/
+newrelic.png
+>>>>>>> 59de4cac484e2f8b721e39575deff921a3c74118

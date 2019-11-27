@@ -18,7 +18,8 @@ class Product(models.Model):
     picture = models.URLField()
     nutrition_image = models.URLField()
     url = models.URLField()
-
+    last_modified_t = models.DateField(null=True, blank=True)
+    openff_id = models.BigIntegerField(null=True, blank=True)
 
 class UserFavorite(models.Model):
     """UserFavorite table"""
