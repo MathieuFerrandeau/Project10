@@ -1,3 +1,5 @@
 __pycache__
 pur_beurre/pur_beurre/settings/production.py
 pur_beurre/pur_beurre/staticfiles/
+env/
+newrelic.png
