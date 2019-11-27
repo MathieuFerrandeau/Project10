@@ -1,3 +1,4 @@
 __pycache__
 pur_beurre/pur_beurre/settings/production.py
 pur_beurre/pur_beurre/staticfiles/
+pur_beurre/logs/

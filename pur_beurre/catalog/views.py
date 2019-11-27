@@ -1,4 +1,6 @@
 """views management"""
+import logging
+
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.template import loader
@@ -9,6 +11,13 @@ from django.contrib import messages
 
 from .models import Product, UserFavorite
 
+
+
+#logging.basicConfig(filename="logs/views.log",
+ #                   filemode="w",
+  #                  format='%(asctime)s - %(message)s',
+   #                 datefmt='%d-%b-%y %H:%M:%S',
+    #                level=logging.INFO)
 
 # Create your views here.
 def index(request):
@@ -44,6 +53,9 @@ def search(request):
     except AttributeError:
         messages.warning(request, "Ce produit n'existe pas. Vérifiez l'orthographe de la recherche")
         return redirect('catalog:index')
+    logging.info('New search', exc_info=True, extra={
+        'request': request,
+    })
     return render(request, 'catalog/search.html', context)
 
 
