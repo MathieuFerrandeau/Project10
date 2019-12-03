@@ -28,7 +28,9 @@ class DataTests(TestCase):
                                nutrition_grade='a',
                                picture='chocolat.jpeg',
                                nutrition_image='chocolatnutrigrade.com',
-                               url='www.chocolat.com')
+                               url='www.chocolat.com',
+                               last_modified_t='22/05/2019',
+                               openff_id= '3256224632627')
 
     def test_search_returns_200(self):
         chocolat = str('Chocolat')
