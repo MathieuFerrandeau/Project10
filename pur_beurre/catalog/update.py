@@ -50,12 +50,12 @@ class Update_db():
                 except IntegrityError:
                     pass
 
-                product_search = Product.objects.filter(openff_id=openff_id)
+                product_search = Product.objects.filter(openff_id=openff_id, name=name, url=url)
                 if product_search.exists():
                     product_date = product_search.first().last_modified_t
                     last_modified_date = last_modified_t
                     if last_modified_date != product_date:
-                        product_search = Product.objects.get(openff_id=openff_id)
+                        product_search = Product.objects.get(openff_id=openff_id, name=name, url=url)
                         try:
                             Product.objects.filter(openff_id=openff_id).update(name=name, 
                                                                               category=new_category, 
@@ -67,7 +67,7 @@ class Update_db():
                                                                               last_modified_t=last_modified_t,
                                                                               openff_id=openff_id)
                             product_search.refresh_from_db()
-
+                            print("Le produit ", name, " a bien été mis a jour")
                         except KeyError:
                             pass
 
@@ -83,7 +83,7 @@ class Update_db():
                 else:
                     try:
                         Product.objects.create(name=name, category=new_category, brand=brand, nutrition_grade=nutrition_grade,
-                                               url=url, picture=picture, nutrition_image=nutrition_image, last_modified_t=last_modified_t)
+                                               url=url, picture=picture, nutrition_image=nutrition_image, last_modified_t=last_modified_t, openff_id=openff_id)
                         print("Le produit ", name, " a été ajouté dans la base de données.")
 
                     except KeyError:
