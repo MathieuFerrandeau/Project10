@@ -3,3 +3,7 @@ pur_beurre/pur_beurre/settings/production.py
 pur_beurre/pur_beurre/staticfiles/
 env/
 newrelic.png
+.idea/
+livrables
+solut10.odt
+solution.pdf
