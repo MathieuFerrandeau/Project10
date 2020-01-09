@@ -50,12 +50,12 @@ class Update_db():
                 except IntegrityError:
                     pass
 
-                product_search = Product.objects.filter(openff_id=openff_id)
+                product_search = Product.objects.filter(openff_id=openff_id, name=name, url=url)
                 if product_search.exists():
                     product_date = product_search.first().last_modified_t
                     last_modified_date = last_modified_t
                     if last_modified_date != product_date:
-                        product_search = Product.objects.get(openff_id=openff_id)
+                        product_search = Product.objects.get(openff_id=openff_id, name=name, url=url)
                         try:
                             Product.objects.filter(openff_id=openff_id).update(name=name, 
                                                                               category=new_category, 
