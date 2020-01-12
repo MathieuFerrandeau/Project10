@@ -5,12 +5,15 @@ from django.test import LiveServerTestCase
 from django.contrib.auth.models import User
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.firefox.options import Options
 
 
 class UserTest(LiveServerTestCase):
 
     def setUp(self):
-        self.browser = webdriver.Firefox()
+        self.options = Options()
+        self.options.headless = True
+        self.browser = webdriver.Firefox(options=self.options)
         User.objects.create_user(username='test',
                                  password='test1234',
                                  email='test@mail.com')
